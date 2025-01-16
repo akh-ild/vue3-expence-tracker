@@ -1,10 +1,18 @@
 <script setup>
+import Counter from './components/Counter.vue';
+import History from './components/History.vue';
+import Form from './components/Form.vue';
+
+
 </script>
 
 <template>
-  <header>
-    <div class="title">Expence tracker</div>
-  </header>
+  <div>
+    <div class="title">Expense tracker</div>
+    <Counter :expense-num="380" :income-num="1400" />
+    <History class="history" />
+    <Form class="form" />
+  </div>
 </template>
 
 <style scoped>
