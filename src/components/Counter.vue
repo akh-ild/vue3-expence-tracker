@@ -25,7 +25,34 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.counter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 12px;
+}
+.counter-income, .counter-expense {
+  border: 1px solid #ccc;
+  padding: 12px;
+  width: 50%;
+}
+
+.counter-expense {
+  .number {
+    color: red;
+  }
+}
+
+.counter-income {
+  .number {
+    color: green;
+  }
+}
+
 .title {
-  font-size: 32px;
+  font-size: 24px;
+}
+.number {
+  font-size: 18px;
 }
 </style>

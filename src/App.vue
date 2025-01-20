@@ -8,15 +8,27 @@ import Form from './components/Form.vue';
 
 <template>
   <div>
-    <div class="title">Expense tracker</div>
-    <Counter :expense-num="380" :income-num="1400" />
-    <History class="history" />
-    <Form class="form" />
+    <div class="container">
+      <div class="title">Expense tracker</div>
+      <Counter :expense-num="380" :income-num="1400" />
+      <History class="history" />
+      <Form class="form" />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.container {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .title {
   font-size: 32px;
+  margin-bottom: 16px;
 }
 </style>

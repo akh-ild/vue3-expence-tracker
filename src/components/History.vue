@@ -23,7 +23,12 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.history {
+  width: 100%;
+  padding-bottom: 12px;
+}
 .title {
-  font-size: 32px;
+  font-size: 28px;
+  padding-bottom: 8px;
 }
 </style>
