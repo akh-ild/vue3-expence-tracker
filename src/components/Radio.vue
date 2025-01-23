@@ -4,19 +4,29 @@ const props = defineProps({
       type: String,
       default: '',
     },
+    id: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      default: '',
+    },
   })
 </script>
 
 <template>
-  <div class="input">
+  <div class="radio">
     <div class="label">{{ props.label }}</div>
-    <input type="text" class="input-text" />
+    <input type="radio" :id="props.id" :name="props.name" class="input-radio" />
   </div>
 </template>
 
 <style scoped>
-.input {
-  width: 100%;
+.radio {
+  display: flex;
+  gap: 8px;
+  flex-direction: row-reverse;
 }
 
 .label {
