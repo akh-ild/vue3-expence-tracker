@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 const props = defineProps({
     label: {
       type: String,
@@ -12,13 +13,27 @@ const props = defineProps({
       type: String,
       default: '',
     },
-  })
+})
+
+const input = ref(null);
+
+defineEmits(['update:modelValue']);
+defineExpose({ input });
 </script>
 
 <template>
   <div class="radio">
     <div class="label">{{ props.label }}</div>
-    <input type="radio" :id="props.id" :name="props.name" class="input-radio" />
+    <input
+      ref="input"
+      :value="modelValue"
+      type="radio"
+      :id="props.id"
+      :name="props.name"
+      :checked="modelValue === value"
+      class="input-radio"
+      @input="$emit('update:modelValue', $event.target.value)"
+     />
   </div>
 </template>
 

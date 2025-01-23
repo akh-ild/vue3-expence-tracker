@@ -2,18 +2,35 @@
 import Input from './Input.vue';
 import Radio from './Radio.vue';
 
+import { addTransaction } from '@/js/addTransaction';
+
+const { transactionName, transactionAmount, transactionType, addTransactionItem } = addTransaction();
 </script>
 
 <template>
   <div class="form">
     <div class="title">Add new transaction</div>
-    <Input label="Text" class="input" />
-    <Input label="Amount" class="input" />
+    <Input v-model="transactionName" label="Text" class="input" />
+    <Input v-model="transactionAmount" label="Amount" type="number" class="input" />
     <div class="radio-wrapper">
-      <Radio label="Income" id="income" name="category" class="radio" />
-      <Radio label="Expense" id="expense" name="category" class="radio" />
+      <Radio
+        v-model="transactionType"
+        label="Income"
+        id="income"
+        name="category"
+        class="radio"
+      />
+      <Radio
+        v-model="transactionType"
+        label="Expense"
+        id="expense"
+        name="category"
+        class="radio"
+        />
     </div>
-    <button class="button">Add transaction</button>
+    <button class="button" @click="addTransactionItem">
+      Add transaction
+    </button>
   </div>
 </template>
 

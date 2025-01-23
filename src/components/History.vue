@@ -1,24 +1,25 @@
 <script setup>
 import HistoryItem from './HistoryItem.vue';
 
-const props = defineProps({
-    incomeNum: {
-      type: Number,
-      default: 0,
-    },
-    expenseNum: {
-      type: Number,
-      default: 0,
-    },
-  })
+import { addTransaction } from '@/js/addTransaction';
+
+const { transactionList } = addTransaction();
 </script>
 
 <template>
   <div class="history">
     <div class="title">History</div>
-    <div class="list">
-      <HistoryItem title="Sneakers" num="200" type="expense" class="item" />
+    <div v-if="transactionList.length" class="list">
+      <HistoryItem
+        v-for="item in transactionList"
+        :key="item.title"
+        :title="item.title"
+        :num=item.num
+        :type="item.type"
+        class="item"
+      />
     </div>
+    <div v-else>No transactions yet</div>
   </div>
 </template>
 
