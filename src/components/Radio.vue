@@ -26,13 +26,13 @@ defineExpose({ input });
     <div class="label">{{ props.label }}</div>
     <input
       ref="input"
-      :value="modelValue"
+      :value="props.id"
       type="radio"
       :id="props.id"
       :name="props.name"
       :checked="modelValue === value"
       class="input-radio"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', props.id)"
      />
   </div>
 </template>

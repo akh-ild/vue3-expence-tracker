@@ -2,8 +2,6 @@
 import Counter from './components/Counter.vue';
 import History from './components/History.vue';
 import Form from './components/Form.vue';
-
-
 </script>
 
 <template>

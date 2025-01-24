@@ -9,12 +9,13 @@ const { transactionList } = addTransaction();
 <template>
   <div class="history">
     <div class="title">History</div>
+    {{ transactionList }}
     <div v-if="transactionList.length" class="list">
       <HistoryItem
         v-for="item in transactionList"
         :key="item.title"
         :title="item.title"
-        :num=item.num
+        :num="item.num"
         :type="item.type"
         class="item"
       />
