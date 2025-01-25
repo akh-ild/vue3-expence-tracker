@@ -1,15 +1,13 @@
 <script setup>
 import HistoryItem from './HistoryItem.vue';
+import { useTransaction } from '@/js/useTransaction';
 
-import { addTransaction } from '@/js/addTransaction';
-
-const { transactionList } = addTransaction();
+const { transactionList } = useTransaction();
 </script>
 
 <template>
   <div class="history">
     <div class="title">History</div>
-    {{ transactionList }}
     <div v-if="transactionList.length" class="list">
       <HistoryItem
         v-for="item in transactionList"

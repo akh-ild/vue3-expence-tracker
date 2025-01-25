@@ -1,10 +1,9 @@
 <script setup>
 import Input from './Input.vue';
 import Radio from './Radio.vue';
+import { useTransaction } from '@/js/useTransaction';
 
-import { addTransaction } from '@/js/addTransaction';
-
-const { transactionName, transactionAmount, transactionType, addTransactionItem } = addTransaction();
+const { transactionName, transactionAmount, transactionType, pushTransaction } = useTransaction();
 </script>
 
 <template>
@@ -28,7 +27,7 @@ const { transactionName, transactionAmount, transactionType, addTransactionItem 
         class="radio"
         />
     </div>
-    <button class="button" @click="addTransactionItem">
+    <button class="button" @click="pushTransaction">
       Add transaction
     </button>
   </div>
