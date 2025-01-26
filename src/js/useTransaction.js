@@ -1,11 +1,16 @@
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 export const useTransaction = () => {
   const transactionName = ref('test');
   const transactionAmount = ref(200);
   const transactionType = ref('expense');
 
-  const transactionList = ref([])
+  const transactionList = ref([]);
+
+  onMounted(() => {
+    console.log('onMounted');
+    transactionList.value = JSON.parse(localStorage.getItem("HistoryItems")) || [];
+  });
 
   const pushTransaction = () => {
     if (transactionName.value === '' || transactionAmount.value === 0) {
@@ -32,6 +37,7 @@ export const useTransaction = () => {
         type: 'expense',
       }
     );
+    localStorage.setItem("HistoryItems", JSON.stringify(transactionList.value));
     console.log(transactionList.value);
     resetFields();
   };
