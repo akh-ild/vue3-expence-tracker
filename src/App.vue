@@ -9,8 +9,8 @@ import Form from './components/Form.vue';
     <div class="container">
       <div class="title">Expense tracker</div>
       <Counter />
-      <History class="history" />
-      <Form class="form" />
+      <History />
+      <Form />
     </div>
   </div>
 </template>

@@ -5,44 +5,33 @@ export const useTransaction = () => {
   const transactionAmount = ref(200);
   const transactionType = ref('expense');
 
-  const transactionList = ref([]);
+  const transactions = ref({
+    list: [],
+  });
+  const count = ref(0);
 
   onMounted(() => {
-    console.log('onMounted');
-    transactionList.value = JSON.parse(localStorage.getItem("HistoryItems")) || [];
+    transactions.value.list = JSON.parse(localStorage.getItem("transactions")) || [];
   });
 
-  const pushTransaction = () => {
+  function pushTransaction() {
+    count.value++;
     if (transactionName.value === '' || transactionAmount.value === 0) {
       return;
     }
-    transactionList.value.push(
+    console.log('here');
+    transactions.value.list.push(
       {
         title: transactionName.value,
         num: transactionAmount.value,
         type: transactionType.value,
       }
     );
-    transactionList.value.push(
-      {
-        title: 'book',
-        num: 100,
-        type: 'income',
-      }
-    );
-    transactionList.value.push(
-      {
-        title: 'car',
-        num: 500,
-        type: 'expense',
-      }
-    );
-    localStorage.setItem("HistoryItems", JSON.stringify(transactionList.value));
-    console.log(transactionList.value);
+    localStorage.setItem("transactions", JSON.stringify(transactions.value.list));
+    console.log(transactions.value.list);
     resetFields();
+    return transactions;
   };
-
-  pushTransaction();
 
   function resetFields() {
     transactionName.value = '';
@@ -54,7 +43,8 @@ export const useTransaction = () => {
     transactionName,
     transactionAmount,
     transactionType,
-    transactionList,
+    transactions,
     pushTransaction,
+    count,
   };
 }

@@ -2,15 +2,17 @@
 import HistoryItem from './HistoryItem.vue';
 import { useTransaction } from '@/js/useTransaction';
 
-const { transactionList } = useTransaction();
+const { transactions, count } = useTransaction();
 </script>
 
 <template>
   <div class="history">
     <div class="title">History</div>
-    <div v-if="transactionList.length" class="list">
+    {{ count }}
+    {{ transactions }}
+    <div v-if="transactions.list.length" class="list">
       <HistoryItem
-        v-for="item in transactionList"
+        v-for="item in transactions.list"
         :key="item.title"
         :title="item.title"
         :num="item.num"
