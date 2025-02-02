@@ -1,29 +1,26 @@
 import { onMounted, ref } from 'vue';
 
+const transactionName = ref('');
+const transactionAmount = ref(0);
+const transactionType = ref('expense');
+
+const transactions = ref({
+  list: [],
+});
+
 export const useTransaction = () => {
-  const transactionName = ref('test');
-  const transactionAmount = ref(200);
-  const transactionType = ref('expense');
-
-  const transactions = ref({
-    list: [],
-  });
-  const count = ref(0);
-
   onMounted(() => {
-    transactions.value.list = JSON.parse(localStorage.getItem("transactions")) || [];
+    // transactions.value.list = JSON.parse(localStorage.getItem("transactions")) || [];
   });
 
   function pushTransaction() {
-    count.value++;
     if (transactionName.value === '' || transactionAmount.value === 0) {
       return;
     }
-    console.log('here');
     transactions.value.list.push(
       {
         title: transactionName.value,
-        num: transactionAmount.value,
+        num: parseInt(transactionAmount.value),
         type: transactionType.value,
       }
     );
@@ -36,7 +33,6 @@ export const useTransaction = () => {
   function resetFields() {
     transactionName.value = '';
     transactionAmount.value = 0;
-    transactionType.value = 'expense';
   };
 
   return {
@@ -45,6 +41,5 @@ export const useTransaction = () => {
     transactionType,
     transactions,
     pushTransaction,
-    count,
   };
 }
