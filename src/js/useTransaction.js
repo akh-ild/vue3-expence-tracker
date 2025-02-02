@@ -10,7 +10,7 @@ const transactions = ref({
 
 export const useTransaction = () => {
   onMounted(() => {
-    // transactions.value.list = JSON.parse(localStorage.getItem("transactions")) || [];
+    transactions.value.list = JSON.parse(localStorage.getItem("transactions")) || [];
   });
 
   function pushTransaction() {
